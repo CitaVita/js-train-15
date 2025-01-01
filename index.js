@@ -7,12 +7,23 @@
  * Повертає випадковий пароль.
  */
 function generateRandomPassword(length) {
+  if (typeof length !== "number" || length <= 0) {
+    return "Помилка: довжина паролю має бути додатним числом.";
+  }
   // Створюємо порожній рядок для збереження паролю.
   // Створюємо рядок characters "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" з доступних символів для паролю.
+ const characters  = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+ const charactersLength = characters.length;
+ let password = "";
   // За допомогою циклу for проходимось по кожному символу рядка characters
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charactersLength);
+    password += characters[randomIndex];
+  }
   // Визначаємо випадковий індекс символу зі списку characters та округляємо до найбільшого цілого, яке менше.
   // Отримуємо символ з випадковим індексом.
   // Додаємо отриманий випадковий символ до паролю.
+  return password;
 }
 
 console.log("Завдання: 1 ==============================");
@@ -28,10 +39,16 @@ console.log(generateRandomPassword(8));
  */
 function calculateCircleArea(radius) {
   // Перевірка, чи переданий радіус є числом.
-  // Якщо радіус не є числом, виводимо в консоль повідомлення про помилку.
-  // Повертаємо null, щоб показати, що обчислення не можливе.
+  if (typeof radius !== "number" || radius <= 0); {
+     // Якщо радіус не є числом, виводимо в консоль повідомлення про помилку.
+    console.log("Помилка: радіус має бути додатним числом.");
+     // Повертаємо null, щоб показати, що обчислення не можливе.
+    return null;
+  }
   // Обчислення площі кола за формулою PI * r^2, де PI - число Пі, а r - радіус.
+  const area = Math.PI * Math.pow(radius, 2);
   // Повертаємо обчислену площу кола.
+  return area;
 }
 
 console.log("Завдання 2 ==============================");
